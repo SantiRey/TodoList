@@ -1,0 +1,21 @@
+{
+  "name": "todolistserver",
+  "version": "1.0.0",
+  "description": "node sever for TodoList",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "Server",
+    "Todo",
+    "List"
+  ],
+  "author": "@ksreyr",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
