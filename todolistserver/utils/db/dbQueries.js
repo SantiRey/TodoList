@@ -10,7 +10,7 @@ function getAll(table) {
 		});
 }
 
-function getOneUser(id, table) {
+function getOne(id, table) {
 	console.log(id);
 	return knex
 		.select()
@@ -22,22 +22,22 @@ function getOneUser(id, table) {
 		});
 }
 
-function createNewUser(body, table) {
+function createOne(body, table) {
 	return knex.insert(body).into(table).returning("*");
 }
 
-function updateUser(id, body, table) {
+function updateOne(id, body, table) {
 	return knex.update(body).from(table).where({ userID: id });
 }
 
-function deleteUser(id, table) {
+function deleteOne(id, table) {
 	return knex.delete().from(table).where({ userID: id });
 }
 
 module.exports = {
 	getAll,
-	getOneUser,
-	createNewUser,
-	updateUser,
-	deleteUser,
+	getOne,
+	createOne,
+	updateOne,
+	deleteOne,
 };

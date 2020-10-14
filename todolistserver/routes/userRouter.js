@@ -4,8 +4,8 @@ var {
 	getAllUsers,
 	createUser,
 	getUser,
-	updateOneUser,
-	deleteOneUser,
+	updateUser,
+	deleteUser,
 } = require("../services/userServices");
 
 router.get("/all", async function (req, res, next) {
@@ -46,7 +46,7 @@ router.put("/:userID", async function (req, res, next) {
 	const id = req.params.userID;
 	const data = req.body;
 	console.log("user to delete with id ", id);
-	updateOneUser(id, data, "users")
+	updateUser(id, data, "users")
 		.then((resq) =>
 			res.status(200).json({ data: resq, messages: "user updated" })
 		)
@@ -56,7 +56,7 @@ router.put("/:userID", async function (req, res, next) {
 router.delete("/:userID", async function (req, res, next) {
 	const id = req.params.userID;
 	console.log("user to delete with id ", id);
-	deleteOneUser(id, "users")
+	deleteUser(id, "users")
 		.then((resq) =>
 			res.status(200).json({ data: resq, messages: "user deleted" })
 		)
