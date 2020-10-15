@@ -3,11 +3,7 @@ const urlRequest = "http://localhost:3000/users/all";
 function getUsers() {
 	//fetch(`${urlRequest}`).then((res) => console.log(res));
 
-	return fetch(`${urlRequest}`, { mode: "cors" })
-		.then((res) => console.log(res))
-		.then((res) => res)
-		.then((res) => res.data)
-		.catch((err) => console.log(err));
+	return fetch(`${urlRequest}`).then((res) => res.json());
 	//.then((res) => res.data);
 }
 
