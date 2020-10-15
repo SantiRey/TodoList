@@ -6,11 +6,12 @@ var {
 	getUser,
 	updateUser,
 	deleteUser,
+	tableName,
 } = require("../services/userServices");
 
 router.get("/all", async function (req, res, next) {
 	try {
-		const users = await getAllUsers("users");
+		const users = await getAllUsers(tableName);
 		res.status(200).json({
 			data: users,
 			messages: "users listed",
@@ -24,7 +25,7 @@ router.get("/:userID", async function (req, res, next) {
 	const { userID } = req.params;
 	console.log(`Request to get user : ${userID}`);
 	try {
-		const users = await getUser(userID, "users");
+		const users = await getUser(userID, tableName);
 		res.status(200).json({
 			data: users,
 			messages: "one user listed",
@@ -36,7 +37,7 @@ router.get("/:userID", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
 	console.log("Got Body: ", req.body);
-	createUser(req.body, "users")
+	createUser(req.body, tableName)
 		.then((resq) =>
 			res.status(201).json({ data: resq, messages: "user created" })
 		)
@@ -46,7 +47,7 @@ router.put("/:userID", async function (req, res, next) {
 	const id = req.params.userID;
 	const data = req.body;
 	console.log("user to delete with id ", id);
-	updateUser(id, data, "users")
+	updateUser(id, data, tableName)
 		.then((resq) =>
 			res.status(200).json({ data: resq, messages: "user updated" })
 		)
@@ -56,7 +57,7 @@ router.put("/:userID", async function (req, res, next) {
 router.delete("/:userID", async function (req, res, next) {
 	const id = req.params.userID;
 	console.log("user to delete with id ", id);
-	deleteUser(id, "users")
+	deleteUser(id, tableName)
 		.then((resq) =>
 			res.status(200).json({ data: resq, messages: "user deleted" })
 		)
