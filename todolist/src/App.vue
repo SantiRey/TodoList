@@ -1,19 +1,19 @@
 <template>
   <main>
     <cx-header/>
-    <cx-task/>
+    <router-view/>
   </main>
 </template>
 
 <script>
 import CxHeader from './components/CxHeader.vue'
-import CxTask from './components/CxTask'
+
 
 export default {
   name: 'App',
   components: {
     CxHeader,
-    CxTask
+    
   }
 }
 </script>
