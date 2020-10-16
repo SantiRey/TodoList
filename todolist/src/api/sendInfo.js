@@ -27,16 +27,12 @@ function crateTask(taskName, userID) {
 }
 function deleteTask(taskID) {
 	return fetch(url + taskID, {
-		method: "delete",
+		method: "DELETE",
 		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ "": "" }),
 	})
 		.then((resp) => {
-			if (resp.status === 200) {
-				return resp.json();
-			} else {
-				console.log("Status: " + resp.status);
-				return Promise.reject("server");
-			}
+			resp.text();
 		})
 		.then((dataJson) => {
 			dataReceived = JSON.parse(dataJson);
