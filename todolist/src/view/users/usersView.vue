@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import api from '../../api/getInfo'
+import userAPI from '../../api/userAPI'
 export default {
   data(){
     return{
@@ -16,7 +16,7 @@ export default {
     }
   },
   created(){
-    api.getUsers("users").then(res => this.users = res.data);
+    userAPI.getUsers("users").then(res => this.users = res.data);
   }
 
 }

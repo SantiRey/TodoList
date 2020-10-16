@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import createTask from "../api/sendInfo";
+import taskAPI from "../api/taskAPI";
 
 export default {
     
@@ -37,7 +37,7 @@ export default {
         addNewTodo(){
             
             console.log('New Todo Sunmited: '+this.newTodo+" For the User: "+this.userID) ;
-            createTask.crateTask(this.newTodo,this.userID);
+            taskAPI.crateTask(this.newTodo,this.userID);
         }
     }
 }

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import apiGETINFO from '../../api/getInfo';
-import apiSENDINFO from '../../api/sendInfo'
+import taskAPI from '../../api/taskAPI';
+
 
 export default {
     data(){
@@ -21,12 +21,12 @@ export default {
         }
     },
     created(){
-        apiGETINFO.getTasks("tasks").then(res => this.tasks = res.data);
+        taskAPI.getTasks().then(res => this.tasks = res.data);
     },
     methods:{
         deleteTask(taskID){
             //console.log("ID::::: "+taskID);
-            apiSENDINFO.deleteTask(taskID);
+            taskAPI.deleteTask(taskID);
         }
     },
 }

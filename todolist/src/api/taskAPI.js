@@ -43,4 +43,9 @@ function deleteTask(taskID) {
 			console.log(err);
 		});
 }
-export default { crateTask, deleteTask };
+
+function getTasks() {
+	url = "http://localhost:3000/" + "tasks" + "/all";
+	return fetch(`${url}`).then((res) => res.json());
+}
+export default { crateTask, deleteTask, getTasks };
