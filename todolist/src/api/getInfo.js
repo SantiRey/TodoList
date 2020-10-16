@@ -1,12 +1,16 @@
-const urlRequest = "http://localhost:3000/users/all";
+var urlRequest = "http://localhost:3000/";
 
-function getUsers() {
-	//fetch(`${urlRequest}`).then((res) => console.log(res));
-
+function getUsers(table) {
+	urlRequest = "http://localhost:3000/" + table + "/all";
 	return fetch(`${urlRequest}`).then((res) => res.json());
-	//.then((res) => res.data);
+}
+
+function getTasks(table) {
+	urlRequest = "http://localhost:3000/" + table + "/all";
+	return fetch(`${urlRequest}`).then((res) => res.json());
 }
 
 export default {
 	getUsers,
+	getTasks,
 };

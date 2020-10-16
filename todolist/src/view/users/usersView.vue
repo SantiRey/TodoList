@@ -1,7 +1,7 @@
 <template>
   <div >
-    <div class="border-solid border-2" v-for="(o) in users" :key="o.userID">
-      <h4 class="text-center text-gray-500 text-2xl">{{o.name}}</h4>
+    <div class="border-solid border-2 m-6" v-for="(o) in users" :key="o.userID">
+      <h4 class="text-center text-gray-600 text-2xl">{{o.name}}</h4>
       <h4 class="text-center text-blue-300 text-lg">UserName</h4>
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
     }
   },
   created(){
-    api.getUsers().then(res => this.users = res.data);
+    api.getUsers("users").then(res => this.users = res.data);
   }
 
 }
