@@ -43,10 +43,10 @@ router.post("/", async function (req, res, next) {
 		)
 		.catch((err) => next(err));
 });
-router.put("/:TaskID", async function (req, res, next) {
-	const id = req.params.TaskID;
+router.put("/:taskID", async function (req, res, next) {
+	const id = req.params.taskID;
 	const data = req.body;
-	console.log("Task to delete with id ", id);
+	console.log("Task to update with id ", id);
 	updateTask(id, data, tableName)
 		.then((resq) =>
 			res.status(200).json({ data: resq, messages: "Task updated" })

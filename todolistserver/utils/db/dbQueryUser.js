@@ -1,6 +1,6 @@
 const { knex } = require("./dbConnection");
 
-function getAll(table) {
+function getA(table) {
 	return knex
 		.select()
 		.table(table)
@@ -10,7 +10,7 @@ function getAll(table) {
 		});
 }
 
-function getOne(id, table) {
+function getU(id, table) {
 	console.log(id);
 	return knex
 		.select()
@@ -22,22 +22,22 @@ function getOne(id, table) {
 		});
 }
 
-function createOne(body, table) {
+function createU(body, table) {
 	return knex.insert(body).into(table).returning("*");
 }
 
-function updateOne(id, body, table) {
+function updateU(id, body, table) {
 	return knex.update(body).from(table).where({ userID: id });
 }
 
-function deleteOne(id, table) {
+function deleteU(id, table) {
 	return knex.delete().from(table).where({ userID: id });
 }
 
 module.exports = {
-	getAll,
-	getOne,
-	createOne,
-	updateOne,
-	deleteOne,
+	getA,
+	getU,
+	createU,
+	updateU,
+	deleteU,
 };

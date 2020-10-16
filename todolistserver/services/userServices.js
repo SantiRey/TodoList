@@ -1,31 +1,31 @@
 const {
-	getAll,
-	getOne,
-	createOne,
-	updateOne,
-	deleteOne,
-} = require("../utils/db/dbQueries");
+	getA,
+	getU,
+	createU,
+	updateU,
+	deleteU,
+} = require("../utils/db/dbQueryUser");
 
 const tableName = "users";
 
 getAllUsers = async function (table) {
-	return getAll(table) || [];
+	return getA(table) || [];
 };
 
 getUser = async function (id, table) {
-	return getOne(id, table) || [];
+	return getU(id, table) || [];
 };
 
 createUser = async function (data, table) {
-	return createOne(data, table) || [];
+	return createU(data, table) || [];
 };
 
 updateUser = async function (id, data, table) {
-	return updateOne(id, data, table) || [];
+	return updateU(id, data, table) || [];
 };
 
 deleteUser = async function (id, table) {
-	return deleteOne(id, table) || [];
+	return deleteU(id, table) || [];
 };
 module.exports = {
 	getAllUsers,

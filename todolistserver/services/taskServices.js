@@ -1,31 +1,31 @@
 const {
-	getAll,
-	getOne,
-	createOne,
-	updateOne,
-	deleteOne,
-} = require("../utils/db/dbQueries");
+	getA,
+	getT,
+	createT,
+	updateT,
+	deleteT,
+} = require("../utils/db/dbQueryTask");
 
 const tableName = "tasks";
 
 getAllTasks = async function (table) {
-	return getAll(table) || [];
+	return getA(table) || [];
 };
 
 getTask = async function (id, table) {
-	return getOne(id, table) || [];
+	return getT(id, table) || [];
 };
 
 createTask = async function (data, table) {
-	return createOne(data, table) || [];
+	return createT(data, table) || [];
 };
 
 updateTask = async function (id, data, table) {
-	return updateOne(id, data, table) || [];
+	return updateT(id, data, table) || [];
 };
 
 deleteTask = async function (id, table) {
-	return deleteOne(id, table) || [];
+	return deleteT(id, table) || [];
 };
 
 module.exports = {
