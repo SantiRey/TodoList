@@ -25,8 +25,8 @@ export default {
     },
     methods:{
         deleteTask(taskID){
-            //console.log("ID::::: "+taskID);
-            taskAPI.deleteTask(taskID);
+            taskAPI.deleteTask(taskID)
+            .then(()=>{taskAPI.getTasks().then(res => this.tasks = res.data)});
         }
     },
 }

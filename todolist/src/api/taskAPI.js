@@ -1,8 +1,7 @@
-var url = "http://localhost:3000/tasks/";
-
 let dataReceived = "";
 
 function crateTask(taskName, userID) {
+	var url = "http://localhost:3000/tasks/";
 	return fetch(url, {
 		method: "post",
 		headers: { "Content-Type": "application/json" },
@@ -26,16 +25,17 @@ function crateTask(taskName, userID) {
 		});
 }
 function deleteTask(taskID) {
+	var url = "http://localhost:3000/tasks/";
+	console.log("URLAPI::::: " + url + taskID);
 	return fetch(url + taskID, {
 		method: "DELETE",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ "": "" }),
 	})
 		.then((resp) => {
-			resp.text();
+			resp.json();
 		})
-		.then((dataJson) => {
-			dataReceived = JSON.parse(dataJson);
+		.then(() => {
 			console.log(dataReceived);
 		})
 		.catch((err) => {
@@ -45,7 +45,7 @@ function deleteTask(taskID) {
 }
 
 function getTasks() {
-	url = "http://localhost:3000/" + "tasks" + "/all";
-	return fetch(`${url}`).then((res) => res.json());
+	var urlRequest = "http://localhost:3000/" + "tasks" + "/all";
+	return fetch(`${urlRequest}`).then((res) => res.json());
 }
 export default { crateTask, deleteTask, getTasks };
