@@ -26,7 +26,6 @@ function crateTask(taskName, userID) {
 }
 function deleteTask(taskID) {
 	var url = "http://localhost:3000/tasks/";
-	console.log("URLAPI::::: " + url + taskID);
 	return fetch(url + taskID, {
 		method: "DELETE",
 		headers: { "Content-Type": "application/json" },

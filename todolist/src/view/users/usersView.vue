@@ -1,23 +1,32 @@
 <template>
   <div >
-    <div class="border-solid border-2 m-6" v-for="(o) in users" :key="o.userID">
-      <h4 class="text-center text-gray-600 text-2xl">{{o.name}}</h4>
-      <h4 class="text-center text-blue-300 text-lg">UserName</h4>
-    </div>
+      <cx-table :array="users" v-on:elementDeleted="updatedUsers" :type="type" />
   </div>
 </template>
 
 <script>
 import userAPI from '../../api/userAPI'
+import CxTable from '../../components/CxTable.vue';
+
 export default {
+  components:{
+    CxTable
+  },
   data(){
     return{
       users:[],
+      type:"user",
     }
   },
   created(){
     userAPI.getUsers("users").then(res => this.users = res.data);
-  }
+  },
+  methods:{
+        updatedUsers(){
+            console.log('METHOD CALLED');
+            userAPI.getUsers("users").then(res => this.users = res.data);
+        }
+    },
 
 }
 </script>

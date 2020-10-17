@@ -2,8 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../view/Home.vue";
 import userView from "../view/users/usersView.vue";
-import taskView from "../view/users/taskView.vue";
-
+import taskView from "../view/task/taskView.vue";
+import newUser from "../components/CxUserCreation.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,6 +21,11 @@ const routes = [
 		path: "/task",
 		name: "taskView",
 		component: taskView,
+	},
+	{
+		path: "/newuser",
+		name: "newUser",
+		component: newUser,
 	},
 ];
 const router = new VueRouter({
