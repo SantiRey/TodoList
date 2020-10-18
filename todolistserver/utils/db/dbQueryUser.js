@@ -22,6 +22,18 @@ function getU(id, table) {
 		});
 }
 
+function getUByName(name, table) {
+	console.log("ask for name: " + name);
+	return knex
+		.select()
+		.from(table)
+		.where({ name: name })
+		.then(function (user) {
+			console.log(user);
+			return user;
+		});
+}
+
 function createU(body, table) {
 	return knex.insert(body).into(table).returning("*");
 }
@@ -33,6 +45,7 @@ function updateU(id, body, table) {
 function deleteU(id, table) {
 	return knex.delete().from(table).where({ userID: id });
 }
+const tableName = "users";
 
 module.exports = {
 	getA,
@@ -40,4 +53,6 @@ module.exports = {
 	createU,
 	updateU,
 	deleteU,
+	getUByName,
+	tableName,
 };

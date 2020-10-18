@@ -4,12 +4,11 @@ const {
 	createT,
 	updateT,
 	deleteT,
+	tableName,
 } = require("../utils/db/dbQueryTask");
 
-const tableName = "tasks";
-
-getAllTasks = async function (table) {
-	return getA(table) || [];
+getAllTasks = async function (tableName) {
+	return getA(tableName) || [];
 };
 
 getTask = async function (id, table) {

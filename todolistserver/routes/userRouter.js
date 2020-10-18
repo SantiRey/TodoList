@@ -7,6 +7,7 @@ var {
 	updateUser,
 	deleteUser,
 	tableName,
+	getUserByName,
 } = require("../services/userServices");
 
 router.get("/all", async function (req, res, next) {
@@ -26,6 +27,20 @@ router.get("/:userID", async function (req, res, next) {
 	console.log(`Request to get user : ${userID}`);
 	try {
 		const users = await getUser(userID, tableName);
+		res.status(200).json({
+			data: users,
+			messages: "one user listed",
+		});
+	} catch (err) {
+		next(err);
+	}
+});
+
+router.get("/name/:userName", async function (req, res, next) {
+	const { userName } = req.params;
+	console.log(`Request to get user : ${userName}`);
+	try {
+		const users = await getUserByName(userName, tableName);
 		res.status(200).json({
 			data: users,
 			messages: "one user listed",
