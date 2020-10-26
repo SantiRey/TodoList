@@ -33,11 +33,12 @@ function updateT(id, body, table) {
 function deleteT(id, table) {
 	return knex.delete().from(table).where({ taskID: id });
 }
-
+const tableName = "tasks";
 module.exports = {
 	getA,
 	getT,
 	createT,
 	updateT,
 	deleteT,
+	tableName,
 };

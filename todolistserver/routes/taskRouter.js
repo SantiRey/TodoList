@@ -1,4 +1,5 @@
 var express = require("express");
+const passport = require("passport");
 var router = express.Router();
 var {
 	getAllTasks,
@@ -9,17 +10,23 @@ var {
 	tableName,
 } = require("../services/taskServices");
 
-router.get("/all", async function (req, res, next) {
-	try {
-		const Tasks = await getAllTasks(tableName);
-		res.status(200).json({
-			data: Tasks,
-			messages: "Tasks listed",
-		});
-	} catch (err) {
-		next(err);
+//JWT
+require("../utils/strategies/jwt");
+router.get(
+	"/all",
+	passport.authenticate("jwt", { session: false }),
+	async function (req, res, next) {
+		try {
+			const Tasks = await getAllTasks(tableName);
+			res.status(200).json({
+				data: Tasks,
+				messages: "Tasks listed",
+			});
+		} catch (err) {
+			next(err);
+		}
 	}
-});
+);
 
 router.get("/:taskID", async function (req, res, next) {
 	const { TaskID } = req.params;
@@ -43,16 +50,20 @@ router.post("/", async function (req, res, next) {
 		)
 		.catch((err) => next(err));
 });
-router.put("/:taskID", async function (req, res, next) {
-	const id = req.params.taskID;
-	const data = req.body;
-	console.log("Task to update with id ", id);
-	updateTask(id, data, tableName)
-		.then((resq) =>
-			res.status(200).json({ data: resq, messages: "Task updated" })
-		)
-		.catch((err) => next(err));
-});
+router.put(
+	"/:taskID",
+	passport.authenticate("jwt", { session: false }),
+	async function (req, res, next) {
+		const id = req.params.taskID;
+		const data = req.body;
+		console.log("Task to update with id ", id);
+		updateTask(id, data, tableName)
+			.then((resq) =>
+				res.status(200).json({ data: resq, messages: "Task updated" })
+			)
+			.catch((err) => next(err));
+	}
+);
 
 router.delete("/:TaskID", async function (req, res, next) {
 	const id = req.params.TaskID;

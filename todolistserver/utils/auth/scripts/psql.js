@@ -2,13 +2,6 @@ const bycript = require("bcrypt");
 const userQuery = require("../../db/dbQueryUser");
 const { config } = require("../../../config/config");
 
-function buildAdminUser(password) {
-	return {
-		password,
-		name: config.authAdminUsername,
-	};
-}
-
 async function hasAdminUser(userQuery) {
 	const adminUser = await userQuery.getA(userQuery.tableName);
 	return adminUser && adminUser.length;

@@ -18,8 +18,6 @@ api.post("/token", async function (req, res, next) {
 				if (error) {
 					next(error);
 				}
-				console.log(":HIER");
-				console.log(user);
 				const payload = { sub: user.name };
 				const token = jwt.sign(payload, config.authJwtSecret, {
 					expiresIn: "15m",
