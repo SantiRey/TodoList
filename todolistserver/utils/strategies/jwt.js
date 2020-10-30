@@ -18,7 +18,9 @@ passport.use(
 				if (!user) {
 					return cb(boom.unauthorized(), false);
 				}
-				return cb(null, user);
+				user.passport = undefined;
+				const objToExport = { ...user, scopes: tokenPayload.scopes };
+				return cb(null, objToExport);
 			} catch (err) {
 				console.log(err);
 			}

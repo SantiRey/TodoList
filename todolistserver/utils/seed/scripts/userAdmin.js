@@ -10,11 +10,11 @@ async function hasAdminUser(userQuery) {
 async function createAdminUser(userQuery) {
 	console.log("PassWORD: " + config.authAdminPassword);
 	const hashenPassword = await bycript.hash(config.authAdminPassword, 10);
-	var userTest = {
+	var userAdmin = {
 		name: "paula",
 		password: hashenPassword,
 	};
-	const userID = await userQuery.createU(userTest, "users");
+	const userID = await userQuery.createU(userAdmin, "users");
 	return userID;
 }
 

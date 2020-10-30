@@ -10,7 +10,8 @@ var knex = require("knex")({
 		database: config.db_name,
 	},
 });
-console.log(config.db_name);
+
+console.log("Connedted to db: " + config.db_name);
 
 module.exports = {
 	knex,

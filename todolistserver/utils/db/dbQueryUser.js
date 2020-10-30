@@ -29,7 +29,6 @@ function getUByName(name, table) {
 		.from(table)
 		.where({ name: name })
 		.then(function (user) {
-			console.log(user);
 			return user;
 		});
 }

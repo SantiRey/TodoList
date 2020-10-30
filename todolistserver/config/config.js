@@ -10,6 +10,7 @@ const config = {
 	authAdminUsername: process.env.AUTH_ADMIN_USERNAME,
 	authAdminPassword: process.env.AUTH_ADMIN_PASSWORD,
 	authJwtSecret: process.env.AUTH_JWT_SECRET,
+	secretAdmin: process.env.SECRET_ADMIN,
 };
 
 module.exports = { config };

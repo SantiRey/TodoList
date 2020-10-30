@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const api = express.Router();
 
 const { config } = require("../config/config");
+const { findByScopes } = require("../utils/db/dbQueryPermissions");
 
 require("../utils/strategies/basic");
 
@@ -18,7 +19,10 @@ api.post("/token", async function (req, res, next) {
 				if (error) {
 					next(error);
 				}
-				const payload = { sub: user.name };
+				var scopes = await findByScopes(user.role);
+				scopes = scopes.map((res) => res.permissionName);
+				console.log(scopes);
+				const payload = { sub: user.name, scopes: scopes };
 				const token = jwt.sign(payload, config.authJwtSecret, {
 					expiresIn: "15m",
 				});
