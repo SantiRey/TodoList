@@ -23,7 +23,6 @@ export default {
   },
   methods:{
         updatedUsers(){
-            console.log('METHOD CALLED');
             userAPI.getUsers("users").then(res => this.users = res.data);
         }
     },

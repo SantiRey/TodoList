@@ -9,6 +9,7 @@
             <router-link class="flex-1 p-3 text-gray-300 text-end" to="/about">about</router-link>
             <router-link class="flex-1 p-3 text-gray-300 text-end" to="/users">users</router-link>
             <router-link class="flex-1 p-3 text-gray-300 text-end" to="/task">task</router-link>
+            <router-link class="flex-1 p-3 text-gray-300 text-end" to="/login">login</router-link>
         </div>
   </header>   
 </template>

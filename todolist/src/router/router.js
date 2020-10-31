@@ -4,6 +4,7 @@ import Home from "../view/Home.vue";
 import userView from "../view/users/usersView.vue";
 import taskView from "../view/task/taskView.vue";
 import newUser from "../components/CxUserCreation.vue";
+import login from "../components/CxLogin.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
 		path: "/newuser",
 		name: "newUser",
 		component: newUser,
+	},
+	{
+		path: "/login",
+		name: "login",
+		component: login,
 	},
 ];
 const router = new VueRouter({
